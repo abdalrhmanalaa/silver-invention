@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>Nassar Dev | Portfolio</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>🚀 Nassar Dev Portfolio</h1>
+
+    <h2>📂 أعمالي السابقة</h2>
+    <div class="projects">
+        {% for p in projects %}
+        <div class="card">
+            <img src="{{ url_for('static', filename='img/' + p.image_url) }}" width="100%">
+            <p>{{ p.title }}</p>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="card">
+        <h3>📩 تواصل معي</h3>
+        <form method="POST" action="/send">
+            <input name="name" placeholder="الاسم" required>
+            <input name="email" type="email" placeholder="الإيميل" required>
+            <textarea name="message" placeholder="رسالتك"></textarea>
+            <button type="submit">إرسال</button>
+        </form>
+    </div>
+
+    <a href="https://wa.me/201121067337" class="wa">واتساب مباشر 💬</a>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
